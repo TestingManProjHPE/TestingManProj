@@ -47,7 +47,8 @@ public class BlogController extends BaseController {
 		blog.set(Blog.column_createtime, 
 				ToolDateTime.getSqlTimestamp(null));
 		blog.save();
-		render("/test/blog/add.html");
+//		render("/test/blog/add.html");
+		redirect("/jf/test/blog");
 	}
 	
 	/**

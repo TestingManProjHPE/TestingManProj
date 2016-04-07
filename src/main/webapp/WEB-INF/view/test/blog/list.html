@@ -82,7 +82,10 @@
 									${i18nMap["admin.common.delete"]} <i class="fa fa-trash-o"></i>
 								</button>
 							<% } %>
-
+							<!-- Trigger the modal with a button -->
+							<button type="button" class="btn btn-info btn-lg" id="mybtn4pop">Open Modal</button>
+							<a href="#" data-toggle="modal" class="ajaxDialog btn btn-purple add-row"
+							   data-url="/jf/test/blog/toUrl?toUrl=/test/blog/add.html" data-backdrop="true">角色弹出窗口</a>
 						</div>
 					</div>
 					<div class="row" id="splitPageDivHead">
@@ -92,39 +95,63 @@
 						<thead>
 							<tr>
 
-								<th class="center hidden-xs" width="50">
-									<input type="checkbox" name="checkAll" class="flat-grey selectall"
-										onchange="common_common.checkFunc('dataTable', this.checked);">
+								<!--<th class="center hidden-xs" width="50">-->
+									<!--<input type="checkbox" name="checkAll" class="flat-grey selectall"-->
+										<!--onchange="common_common.checkFunc('dataTable', this.checked);">-->
+								<!--</th>-->
+								<!--<th class="hidden-xs" onclick="common_splitPage.orderbyFun(-->
+										<!--'mainPanel', 'splitPage', 'title')">-->
+									<!--标题	${orderBy("title")}-->
+								<!--</th>-->
+								<th class="hidden-xs">
+									总结
 								</th>
-								<th class="hidden-xs" onclick="common_splitPage.orderbyFun(
-										'mainPanel', 'splitPage', 'title')">
-									标题	${orderBy("title")}
+								<!--<th class="hidden-xs" onclick="common_splitPage.orderbyFun(-->
+										<!--'mainPanel', 'splitPage', 'createtime')">-->
+									<!--创建时间	${orderBy("createtime")}-->
+								<!--</th>-->
+								<th class="hidden-xs">
+									发现者
 								</th>
-								<th class="hidden-xs" onclick="common_splitPage.orderbyFun(
-										'mainPanel', 'splitPage', 'createtime')">
-									创建时间	${orderBy("createtime")}
+								<th class="hidden-xs">
+									发现日期
 								</th>
 								<th class="hidden-xs">
 									${i18nMap["admin.common.operation"]}
 								</th>
-
+								<th class="hidden-xs">
+									测试
+								</th>
 							</tr>
 						</thead>
 						<tbody>
 
 							<% for(blog in splitPage.list){ %>
 							<tr>
-								<td class="center hidden-xs">
-									<input type="checkbox" name="checkIds"
-										value="${user.ids!}" class="flat-grey foocheck">
-								</td>
+								<!--<td class="center hidden-xs">-->
+									<!--<input type="checkbox" name="checkIds"-->
+										<!--value="${user.ids!}" class="flat-grey foocheck">-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--<span class="label label-sm label-success">-->
+										<!--${escapeXml(blog["title"]!)}-->
+									<!--</span>-->
+								<!--</td>-->
 								<td>
 									<span class="label label-sm label-success">
-										${escapeXml(blog["title"]!)}
+										${escapeXml(blog["summary"]!)}
 									</span>
 								</td>
 								<td>
-									${blog.createtime !, dateFormat="yyyy-MM-dd HH:mm:ss.SSS"}
+									<span class="label label-sm label-success">
+										${escapeXml(blog["assignedto"]!)}
+									</span>
+								</td>
+								<!--<td>-->
+									<!--${blog.createtime !, dateFormat="yyyy-MM-dd HH:mm:ss.SSS"}-->
+								<!--</td>-->
+								<td>
+									${blog.detecteddate !, dateFormat="yyyy-MM-dd HH:mm:ss.SSS"}
 								</td>
 								<td class="hidden-xs">
 									<div class="btn-group">
@@ -171,6 +198,11 @@
 										<!--<i class="fa fa-trash-o"></i>-->
 									<!--</button>-->
 									<!--<% } %>-->
+								</td>
+								<td>
+									<span class="label label-sm label-success">
+										${escapeXml(blog["summary"]!)}
+									</span>
 								</td>
 							</tr>
 							<% } %>
@@ -329,10 +361,8 @@
 	<!--END Datatable 3-->
 </form>
 
-<!--<script src="${cxt!}/ui/angle/backend-jquery/app/js/demo/demo-datatable.js"></script>-->
-
 <script type="text/javascript">
-	console.log('==================================================in list about to init==================================================');
+//	console.log('==================================================in list about to init==================================================');
 //	var dtInstance2 = $('#datatableyxin2').dataTable({
 //		//$('#datatableyxin2').dataTable({
 //		'paging':   true,  // Table pagination
@@ -360,6 +390,8 @@
 
 //	jQuery(document).ready(function() {
 //		console.log('==================================================in jquery . ready==================================================');
-		common_form().init();
+//	common_form().init();
+	common_modals.init();
+
 //	});
 </script>

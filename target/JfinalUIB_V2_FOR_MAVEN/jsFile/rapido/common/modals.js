@@ -5,48 +5,51 @@ var common_modals = function() {
 	 * 注册弹出框事件功能
 	 */
 	var initModals = function() {
-		var progressHtml = '<div class="loading-spinner" style="width: 200px; margin-left: -100px;">' + 
-		'<div class="progress progress-striped active">' + 
+		var progressHtml = '<div class="loading-spinner" style="width: 200px; margin-left: -100px;">' +
+		'<div class="progress progress-striped active">' +
 		'<div class="progress-bar" style="width: 100%;"></div>' + '</div>' + '</div>';
-		
+
 		$.fn.modalmanager.defaults.resize = true;
 		$.fn.modal.defaults.spinner = $.fn.modalmanager.defaults.spinner = progressHtml;
-		
+		$.fn.modal.defaults.backdrop = true;
 		
 		var $modal = $('#ajax-modal');
-		/*
+
 		$('.ajaxDialog').on('click', function() {
-			// create the backdrop and wait for next modal to be triggered
+			// create the backdrop and wait for next modal to be triggered, trigger the loading page before actual data loaded successfully.
 			$('body').modalmanager('loading');
-			
+
 			var url = $(this).attr("data-url");
 			url = encodeURI(encodeURI(cxt + url));
-			
+
 			var data = $(this).attr("data-param");
 			data = "[" + data + "]";
 			data = eval(data);
-			
+
 			$modal.load(url, data[0], function() {
 				$modal.modal();
 			});
+
+
+
 		});
-		*/
-		$(document).on("click", ".ajaxDialog", function(e) {
-			e.preventDefault();
-			// create the backdrop and wait for next modal to be triggered
-			$('body').modalmanager('loading');
-			
-			var url = $(this).attr("data-url");
-			url = encodeURI(encodeURI(cxt + url));
-			
-			var data = $(this).attr("data-param");
-			data = "[" + data + "]";
-			data = eval(data);
-			
-			$modal.load(url, data[0], function() {
-				$modal.modal();
-			});
-		});
+
+		//$(document).on("click", ".ajaxDialog", function(e) {
+		//	e.preventDefault();
+		//	// create the backdrop and wait for next modal to be triggered
+		//	$('body').modalmanager('loading');
+		//
+		//	var url = $(this).attr("data-url");
+		//	url = encodeURI(encodeURI(cxt + url));
+		//
+		//	var data = $(this).attr("data-param");
+		//	data = "[" + data + "]";
+		//	data = eval(data);
+		//
+		//	$modal.load(url, data[0], function() {
+		//		$modal.modal();
+		//	});
+		//});
 		
 		/*
 		$modal.on('click', '.update', function() {alert(222);

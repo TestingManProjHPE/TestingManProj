@@ -17,7 +17,7 @@
 
 <!-- start: BODY -->
 <body>
-	
+
 	<div class="wrapper">
 		<!-- start: TOPBAR -->
 		<% include("/platform/index/header.html"){} %>
@@ -61,8 +61,9 @@
 				<!-- /.modal -->
 				<!-- end: SPANEL CONFIGURATION MODAL FORM -->
 				
-				<div id="ajax-modal" class="modal extended-modal fade no-display" tabindex="-1"></div>
-				
+				<!--<div id="ajax-modal" class="modal extended-modal fade no-display" tabindex="-1" style="margin-top: 0px; margin-left: 200px"></div>-->
+				<div id="ajax-modal" class="modal fade in" data-backdrop="true" tabindex="-1"></div>
+
 				<div class="container">
 					<!-- start: PAGE HEADER -->
 					<!-- start: TOOLBAR -->
@@ -117,16 +118,18 @@
 	</div>
 	
 	<% include("/platform/index/js.html"){} %>
-	
+
 	<script type="text/javascript">
-		
+		console.log("========================in index init() js================================");
 //		jQuery(document).ready(function() {
 			Main.init();
 			SVExamples.init();
 			common_modals.init();
 			common_ajax.ajaxMainPanel("/jf/platform/index/content");
 //		});
-		
+//$("#mybtn4pop").click(function(){
+//	$("#myModal").modal();
+//});
 	</script>
 </body>
 <!-- end: BODY -->
