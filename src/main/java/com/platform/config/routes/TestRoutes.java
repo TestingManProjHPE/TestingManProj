@@ -12,7 +12,7 @@ public class TestRoutes extends Routes {
 	@Override
 	public void config() {
 		add("/jf/test/blog", BlogController.class);
-//		add("/jf/test/angle", AngleTableController.class);
+		add("/jf/test/angle", AngleTableController.class);
 	}
 
 }

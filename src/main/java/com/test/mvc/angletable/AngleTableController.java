@@ -2,6 +2,7 @@ package com.test.mvc.angletable;
 
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 import com.platform.mvc.base.BaseController;
 import com.test.mvc.blog.Blog;
 import com.test.mvc.blog.BlogValidator;
@@ -28,9 +29,14 @@ public class AngleTableController extends BaseController {
 
     public void get() {
         log.info("=====================inget()================");
-        List<Blog> loblog = Blog.dao.findAll();
+//        List<Blog> loblog = Blog.dao.findAll();
 //        setAttr("blogs", loblog);
-        renderJson("blogs",loblog);
+//        renderJson("blogs",loblog);
+        List<Record> testrecordone = Db.find("SELECT detecteddate as name, count(*) as value " +
+                "  FROM test_blog" +
+                "  group by detecteddate");
+//        setAttr("testdata1",testrecordone);
+        renderJson("testdata1",testrecordone);
     }
 
     @Before(BlogValidator.class)
